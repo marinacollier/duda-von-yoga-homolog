@@ -1,0 +1,350 @@
+/* Dudavon Yoga · site institucional. Mobile first, sem framework.
+   Cores e fontes iguais às do app (src/theme/index.ts). */
+
+:root {
+  --floresta: #1B5723;
+  --floresta-escura: #123D18;
+  --salvia: #9DB39A;
+  --folha-clara: #C9D8C3;
+  --nevoa: #E3EBDF;
+  --papel: #F6F4EE;
+  --branco: #FFFFFF;
+  --borda: #D6DDD2;
+  --texto-suave: #5E625A;
+  --texto-medio: #3F443C;
+  --tinta: #181818;
+  --terra: #E8836B;
+
+  --f-display: 'Anton', 'Oswald', Impact, 'Arial Narrow Bold', sans-serif;
+  --f-marca: 'Fraunces', Georgia, 'Times New Roman', serif;
+  --f-corpo: 'DM Sans', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+
+  --raio: 24px;
+  --raio-g: 32px;
+  --gutter: 20px;
+  --max: 1160px;
+  --secao: 72px;
+}
+
+@media (min-width: 760px) {
+  :root { --gutter: 32px; --secao: 112px; }
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; scroll-padding-top: 80px; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+
+body {
+  margin: 0;
+  background: var(--papel);
+  color: var(--tinta);
+  font-family: var(--f-corpo);
+  font-size: 17px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+img { display: block; max-width: 100%; height: auto; }
+h1, h2, h3, p, ul, ol, figure { margin: 0; }
+ul[role='list'], ol[role='list'] { list-style: none; padding: 0; }
+a { color: var(--floresta); }
+
+:focus-visible { outline: 3px solid var(--terra); outline-offset: 3px; border-radius: 6px; }
+
+.pular {
+  position: absolute; left: 12px; top: -60px; z-index: 100;
+  background: var(--branco); color: var(--floresta); font-weight: 700;
+  padding: 12px 18px; border-radius: 999px; text-decoration: none;
+}
+.pular:focus { top: 12px; }
+
+/* Tipografia */
+.display {
+  font-family: var(--f-display);
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: .005em;
+  line-height: .98;
+  text-wrap: balance;
+}
+.display--g { font-size: clamp(38px, 8.5vw, 72px); }
+.display--m { font-size: clamp(32px, 6vw, 48px); }
+
+.rotulo {
+  display: block;
+  font-size: 12px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase;
+  color: var(--floresta);
+  margin-bottom: 14px;
+}
+.rotulo--claro { color: var(--folha-clara); }
+.lead { font-size: clamp(19px, 2.4vw, 22px); line-height: 1.5; color: var(--texto-medio); }
+.nota { margin-top: 28px; font-size: 14px; color: var(--texto-suave); max-width: 60ch; }
+.a-confirmar {
+  display: inline-block; margin-top: 8px;
+  font-size: 14px; color: #7A2E1C; background: #FBEAE5; padding: 6px 12px; border-radius: 10px;
+}
+
+/* Botões */
+.botao {
+  display: inline-flex; align-items: center; justify-content: center;
+  min-height: 56px; padding: 0 30px; border-radius: 999px;
+  font-weight: 700; font-size: 16px; text-decoration: none;
+  transition: transform .15s ease, background-color .15s ease;
+}
+.botao:hover { transform: translateY(-1px); }
+.botao:active { transform: translateY(1px); }
+.botao--claro { background: var(--papel); color: var(--floresta); }
+.botao--claro:hover { background: var(--branco); }
+.botao--contorno { border: 2px solid rgba(255, 255, 255, .7); color: var(--branco); }
+.botao--contorno:hover { background: rgba(255, 255, 255, .1); }
+.botao--pequeno { min-height: 42px; padding: 0 20px; font-size: 15px; }
+
+/* Estrutura */
+.miolo { width: 100%; max-width: var(--max); margin: 0 auto; padding: 0 var(--gutter); }
+.miolo--estreito { max-width: 820px; }
+.secao { padding: var(--secao) 0; position: relative; overflow: hidden; }
+
+/* Topo */
+.topo {
+  position: absolute; inset: 0 0 auto 0; z-index: 10;
+  padding-top: env(safe-area-inset-top);
+}
+.topo__miolo {
+  max-width: var(--max); margin: 0 auto; padding: 18px var(--gutter);
+  display: flex; align-items: center; gap: 20px;
+}
+/* Assinatura da marca: símbolo + "Dudavon" (Fraunces) com "YOGA" espaçado abaixo.
+   --m é a altura do símbolo; o resto escala a partir dela (igual ao componente Marca do app). */
+.marca {
+  --m: 40px;
+  display: inline-flex; align-items: center; gap: calc(var(--m) * .24);
+  color: var(--branco); text-decoration: none; line-height: 1;
+}
+.marca__simbolo { height: var(--m); width: auto; flex: none; }
+.marca__nome { display: grid; gap: calc(var(--m) * .06); }
+.marca__dudavon {
+  font-family: var(--f-marca); font-weight: 600;
+  font-size: calc(var(--m) * .62); line-height: 1.05; letter-spacing: -.01em;
+}
+.marca__yoga {
+  font-family: var(--f-corpo); font-weight: 500; text-transform: uppercase;
+  font-size: max(10px, calc(var(--m) * .2)); letter-spacing: .42em; margin-left: 2px;
+}
+.topo__marca { --m: 40px; }
+.topo__nav { display: none; margin-left: auto; gap: 28px; }
+.topo__nav a { color: var(--nevoa); text-decoration: none; font-weight: 500; font-size: 15px; }
+.topo__nav a:hover { color: var(--branco); text-decoration: underline; text-underline-offset: 4px; }
+.topo .botao { margin-left: auto; }
+@media (min-width: 760px) {
+  .topo__nav { display: flex; }
+  .topo .botao { margin-left: 8px; }
+  .topo__marca { --m: 48px; }
+}
+
+/* Pattern da marca */
+.hero__pattern, .alem__pattern, .baixar__pattern {
+  position: absolute; inset: 0; pointer-events: none;
+  background-image: url('img/pattern-branco.png');
+  background-size: 420px auto;
+  background-repeat: repeat;
+  opacity: .08;
+}
+
+/* Hero */
+.hero {
+  position: relative; overflow: hidden;
+  background: var(--floresta);
+  color: var(--branco);
+  padding-top: calc(96px + env(safe-area-inset-top));
+}
+.hero__miolo {
+  position: relative; max-width: var(--max); margin: 0 auto; padding: 0 var(--gutter);
+  display: grid; gap: 8px;
+}
+.hero__texto { position: relative; z-index: 2; padding-bottom: 8px; }
+.hero__titulo { font-size: clamp(46px, 12vw, 96px); margin-bottom: 22px; max-width: 12ch; }
+.hero__sub { color: var(--nevoa); font-size: 18px; max-width: 46ch; margin-bottom: 30px; }
+.hero__acoes { display: flex; flex-wrap: wrap; gap: 12px; }
+.hero__foto { position: relative; margin: 0 -20px; display: flex; justify-content: flex-end; }
+.hero__foto img { width: min(78vw, 420px); margin-right: -8vw; }
+.hero__foto::after {
+  content: ''; position: absolute; inset: auto 0 0 0; height: 30%;
+  background: linear-gradient(rgba(27, 87, 35, 0), var(--floresta));
+}
+@media (min-width: 900px) {
+  .hero { padding-top: 120px; min-height: min(100vh, 900px); }
+  .hero__miolo { grid-template-columns: 1.15fr .85fr; align-items: end; }
+  .hero__texto { padding-bottom: 120px; }
+  .hero__foto { margin: 0; }
+  .hero__foto img { width: 100%; max-width: 480px; margin-right: -40px; }
+}
+
+/* Proposta */
+.proposta__grade { display: grid; gap: 32px; }
+.proposta__texto { display: grid; gap: 28px; }
+.principios { display: grid; gap: 18px; }
+.principios li { padding-left: 22px; border-left: 3px solid var(--salvia); color: var(--texto-medio); }
+.principios strong { color: var(--tinta); }
+@media (min-width: 900px) {
+  .proposta__grade { grid-template-columns: 1fr 1fr; gap: 64px; align-items: start; }
+}
+
+/* Sobre */
+.sobre { background: var(--branco); }
+.sobre__grade { display: grid; gap: 44px; }
+.sobre__fotos { position: relative; display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.sobre__foto { border-radius: var(--raio); aspect-ratio: 3 / 4; object-fit: cover; width: 100%; }
+.sobre__foto--b { margin-top: 48px; object-position: top; }
+.sobre__texto { display: grid; gap: 16px; align-content: center; }
+.sobre__texto p { color: var(--texto-medio); max-width: 56ch; }
+.sobre__texto .assinatura { color: var(--floresta); font-weight: 700; }
+@media (min-width: 900px) {
+  .sobre__grade { grid-template-columns: 1fr 1fr; gap: 80px; }
+}
+
+/* Metodologia */
+.passos { display: grid; gap: 14px; margin-top: 36px; counter-reset: passo; }
+.passos li {
+  position: relative; background: var(--branco); border: 1px solid var(--borda);
+  border-radius: var(--raio); padding: 24px 24px 24px 84px;
+}
+.passos__n {
+  position: absolute; left: 22px; top: 22px;
+  width: 44px; height: 44px; border-radius: 50%;
+  background: var(--floresta); color: var(--branco);
+  display: grid; place-items: center; font-weight: 700;
+}
+.passos h3 { font-size: 19px; }
+.passos p { color: var(--texto-suave); }
+@media (min-width: 900px) {
+  .passos { grid-template-columns: repeat(4, 1fr); }
+  .passos li { padding: 84px 24px 28px; }
+}
+
+/* Além das posturas */
+.alem { background: var(--floresta-escura); color: var(--branco); }
+.alem__grade { position: relative; display: grid; gap: 28px; }
+.alem__texto { display: grid; gap: 18px; color: var(--nevoa); font-size: 18px; }
+@media (min-width: 900px) { .alem__grade { grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; } }
+
+/* Benefícios */
+.cards-texto { display: grid; gap: 14px; margin-top: 36px; }
+.cards-texto li { background: var(--nevoa); border-radius: var(--raio); padding: 26px; }
+.cards-texto h3 { font-size: 19px; margin-bottom: 6px; color: var(--floresta-escura); }
+.cards-texto p { color: var(--texto-medio); }
+@media (min-width: 700px) { .cards-texto { grid-template-columns: 1fr 1fr; } }
+@media (min-width: 1000px) { .cards-texto { grid-template-columns: repeat(4, 1fr); } }
+
+/* Recursos do app */
+.app { background: var(--branco); }
+.recursos { display: grid; gap: 14px; margin-top: 36px; }
+.recurso { border: 1px solid var(--borda); border-radius: var(--raio); padding: 26px; background: var(--papel); }
+.recurso h3 { font-size: 20px; margin-bottom: 6px; }
+.recurso p { color: var(--texto-medio); }
+.recurso--destaque { padding: 0; overflow: hidden; background: var(--floresta); color: var(--branco); display: grid; }
+.recurso--destaque img { width: 100%; aspect-ratio: 16 / 10; object-fit: cover; }
+.recurso--destaque div { padding: 26px; }
+.recurso--destaque p { color: var(--nevoa); }
+@media (min-width: 760px) {
+  .recursos { grid-template-columns: repeat(2, 1fr); }
+  .recurso--destaque { grid-row: span 2; }
+  .recurso--destaque img { aspect-ratio: auto; height: 100%; min-height: 240px; }
+}
+@media (min-width: 1000px) {
+  .recursos { grid-template-columns: 1.3fr 1fr 1fr; }
+}
+
+/* Jornadas: caminho orgânico */
+.jornadas__grade { display: grid; gap: 40px; align-items: center; }
+.jornadas__grade > div { display: grid; gap: 18px; }
+.jornadas__grade > div > p:not(.rotulo) { color: var(--texto-medio); }
+.caminho { width: 100%; max-width: 320px; margin: 0 auto; overflow: visible; }
+.caminho__trilha { fill: none; stroke: var(--folha-clara); stroke-width: 14; stroke-linecap: round; }
+.caminho__feito { fill: none; stroke: var(--floresta); stroke-width: 14; stroke-linecap: round; }
+.caminho__estacao { fill: var(--papel); stroke: var(--salvia); stroke-width: 5; }
+.caminho__estacao--feita { fill: var(--floresta); stroke: var(--floresta); }
+.caminho__estacao--agora { fill: var(--terra); stroke: var(--papel); stroke-width: 6; }
+@media (min-width: 900px) { .jornadas__grade { grid-template-columns: 1.2fr .8fr; gap: 80px; } }
+
+/* Prática personalizada */
+.personalizada { background: var(--nevoa); }
+.pers__grade { display: grid; gap: 40px; align-items: center; }
+.pers__grade > div { display: grid; gap: 18px; }
+.pers__foto { border-radius: var(--raio-g); aspect-ratio: 4 / 5; object-fit: cover; width: 100%; max-height: 560px; }
+.niveis { display: grid; gap: 12px; }
+.niveis li { background: var(--branco); border-radius: 18px; padding: 16px 18px; color: var(--texto-medio); display: grid; gap: 8px; }
+.nivel {
+  justify-self: start; font-size: 11px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase;
+  padding: 6px 12px; border-radius: 999px;
+}
+.nivel--ini { background: var(--nevoa); color: var(--floresta); }
+.nivel--int { background: var(--folha-clara); color: var(--floresta-escura); }
+.nivel--ava { background: var(--floresta); color: var(--branco); }
+@media (min-width: 900px) { .pers__grade { grid-template-columns: .9fr 1.1fr; gap: 80px; } }
+
+/* Comunidade + aulas online */
+.duas__grade { display: grid; gap: 16px; }
+.painel { border-radius: var(--raio-g); padding: 36px 28px; display: grid; gap: 14px; align-content: start; }
+.painel--claro { background: var(--branco); border: 1px solid var(--borda); }
+.painel--claro p:not(.rotulo) { color: var(--texto-medio); }
+.painel--verde { background: var(--floresta); color: var(--branco); }
+.painel--verde p:not(.rotulo) { color: var(--nevoa); }
+@media (min-width: 900px) { .duas__grade { grid-template-columns: 1fr 1fr; } .painel { padding: 48px; } }
+
+/* Eventos */
+.eventos__grade { display: grid; gap: 40px; align-items: center; }
+.eventos__grade > div { display: grid; gap: 16px; }
+.eventos__grade > div > p:not(.rotulo) { color: var(--texto-medio); }
+.eventos__foto { border-radius: 50% 50% var(--raio) var(--raio); aspect-ratio: 2 / 3; object-fit: cover; width: min(100%, 360px); }
+@media (min-width: 900px) { .eventos__grade { grid-template-columns: .8fr 1.2fr; gap: 80px; } }
+
+/* Baixar o app */
+.baixar { background: var(--floresta); color: var(--branco); text-align: center; }
+.baixar__miolo { position: relative; display: grid; gap: 22px; justify-items: center; max-width: 760px; }
+.baixar .lead { color: var(--nevoa); }
+.lojas { display: flex; gap: 12px; flex-wrap: wrap; justify-content: center; }
+.loja { color: var(--branco); border: 1px solid var(--folha-clara); border-radius: 12px; padding: 12px 18px; text-decoration: none; }
+
+/* FAQ */
+.faq h2 { margin-bottom: 28px; }
+.faq details { border-top: 1px solid var(--borda); }
+.faq details:last-of-type { border-bottom: 1px solid var(--borda); }
+.faq summary {
+  cursor: pointer; list-style: none; padding: 22px 44px 22px 0; position: relative;
+  font-weight: 700; font-size: 18px;
+}
+.faq summary::-webkit-details-marker { display: none; }
+.faq summary::after {
+  content: ''; position: absolute; right: 6px; top: 50%; width: 12px; height: 12px; margin-top: -8px;
+  border-right: 2.5px solid var(--floresta); border-bottom: 2.5px solid var(--floresta);
+  transform: rotate(45deg); transition: transform .2s ease;
+}
+.faq details[open] summary::after { transform: rotate(-135deg); margin-top: -2px; }
+.faq details p { padding: 0 0 22px; color: var(--texto-medio); max-width: 62ch; }
+
+/* Contato */
+.contato { background: var(--branco); }
+.contato__grade { display: grid; gap: 32px; }
+.contato__grade > div > p:not(.rotulo) { color: var(--texto-medio); margin-top: 14px; }
+.contato__lista { display: grid; gap: 14px; }
+.contato__lista li { background: var(--papel); border-radius: 18px; padding: 20px 22px; }
+.contato__lista .rotulo { margin-bottom: 4px; }
+.contato__lista a { font-size: 20px; font-weight: 700; text-decoration: none; }
+.contato__lista a:hover { text-decoration: underline; }
+@media (min-width: 900px) { .contato__grade { grid-template-columns: 1fr 1fr; align-items: center; } }
+
+/* Rodapé */
+.rodape {
+  background: var(--floresta-escura); color: var(--nevoa);
+  padding: 48px 0 calc(40px + env(safe-area-inset-bottom));
+}
+.rodape__miolo { display: grid; gap: 22px; justify-items: start; }
+.rodape nav { display: flex; flex-wrap: wrap; gap: 10px 24px; }
+.rodape a { color: var(--nevoa); }
+.rodape__marca { --m: 44px; }
+.rodape__versao { font-size: 13px; color: var(--salvia); }
+@media (min-width: 760px) {
+  .rodape__miolo { grid-template-columns: auto 1fr auto; align-items: center; }
+  .rodape nav { justify-content: center; }
+}

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>Dudavon Yoga</title>
+    <!-- The `react-native-web` recommended style reset: https://necolas.github.io/react-native-web/docs/setup/#root-element -->
+    <style id="expo-reset">
+      /* These styles make the body full-height */
+      html,
+      body {
+        height: 100%;
+      }
+      /* These styles disable body scrolling if you are using <ScrollView> */
+      body {
+        overflow: hidden;
+      }
+      /* These styles make the root element full-height */
+      #root {
+        display: flex;
+        height: 100%;
+        flex: 1;
+      }
+    </style>
+    <meta name="description" content="Aulas de yoga com a Duda: jornadas, práticas do dia e comunidade." />
+    <meta name="robots" content="noindex, nofollow" />
+    <meta name="theme-color" content="#1B5723" />
+    <meta name="app-version" content="0.2.0+9e9488e" />
+    <meta name="app-env" content="homolog" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <meta name="apple-mobile-web-app-title" content="Dudavon Yoga" />
+    <link rel="manifest" href="/duda-von-yoga-homolog/app/manifest.webmanifest" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/duda-von-yoga-homolog/app/icones/favicon-32.png" />
+    <link rel="icon" type="image/png" sizes="48x48" href="/duda-von-yoga-homolog/app/icones/favicon-48.png" />
+    <link rel="apple-touch-icon" href="/duda-von-yoga-homolog/app/icones/apple-touch-icon.png" />
+    <style id="dvy-web">
+      html, body, #root { height: 100%; }
+      html, body { background: #F6F4EE; overscroll-behavior: none; }
+      body { margin: 0; -webkit-tap-highlight-color: transparent; -webkit-text-size-adjust: 100%; }
+      /* iOS dá zoom em campos com fonte menor que 16px */
+      @supports (-webkit-touch-callout: none) { input, textarea, select { font-size: max(16px, 1em) !important; } }
+    </style>
+    <script>(function(){function rotaRestaurada(search, baseApp) {
+  var m = /[?&]__rota=([^&#]*)/.exec(search);
+  if (!m) return null;
+  var rota;
+  try {
+    rota = decodeURIComponent(m[1]);
+  } catch (e) {
+    return null;
+  }
+  if (rota.charAt(0) !== '/' || rota.charAt(1) === '/' || rota.charAt(1) === '\\') return null;
+  return baseApp + rota;
+}var d=rotaRestaurada(location.search,"/duda-von-yoga-homolog/app");if(d)history.replaceState(null,'',d);})();</script>
+  </head>
+
+  <body>
+    <!-- Use static rendering with Expo Router to support running without JavaScript. -->
+    <noscript>
+      You need to enable JavaScript to run this app.
+    </noscript>
+    <!-- The root element for your Expo app. -->
+    <div id="root"></div>
+  <script src="/duda-von-yoga-homolog/app/_expo/static/js/web/entry-cb450a331cb8f5e89b2e9ebdfd144853.js" defer></script>
+</body>
+</html>
